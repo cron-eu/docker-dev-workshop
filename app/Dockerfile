@@ -3,7 +3,7 @@ FROM debian:latest
 # install apache and mod_php
 RUN apt-get update \
   && apt-get -y install vim libapache2-mod-php \
-  && rm -rf rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/*
 
 # install mysqlclient libraries and other stuff
 RUN apt-get install -y mysql-client php-mysql curl zip unzip php-xml less \
