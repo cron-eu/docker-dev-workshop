@@ -5,7 +5,8 @@ RUN apt-get update ; apt-get -y install vim php-cli \
   && rm -rf /var/lib/apt/lists/*
 
 # install mysqlclient libraries and other stuff
-RUN apt-get install -y mysql-client php-mysql curl zip unzip php-xml less \
+RUN apt-get update \
+ && apt-get install -y mysql-client php-mysql curl zip unzip php-xml less \
  php-gd php-zip \
  && phpenmod xml gd zip \
  && rm -rf /var/lib/apt/lists/*
@@ -22,7 +23,9 @@ RUN chsh -s /bin/bash www-data \
 COPY authorized_keys /var/www/.ssh/authorized_keys
 
 # install OpenSSH server
-RUN apt-get install -y openssh-server && mkdir /var/run/sshd
+RUN apt-get update \
+  && apt-get install -y openssh-server && mkdir /var/run/sshd \
+  && rm -rf /var/lib/apt/lists/*
 
 # Start SSH server
 CMD ["/usr/sbin/sshd", "-D"]
