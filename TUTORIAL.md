@@ -48,6 +48,53 @@ Run the browser and access phpinfo()
 open http://$(docker-machine ip workshop):8000/phpinfo.php
 ```
 
+Dockerfile
+----------
+
+Build `myapp` as an image:
+
+```
+docker build -t myapp app/
+```
+
+List available docker images:
+
+```
+docker images
+```
+
+Create a new app instance and from the `myapp` image:
+
+```
+docker run -d -p 8000:80 --name myapp_1 myapp
+```
+
+`-d` - daemon, runs in background
+
+List running containers:
+
+```
+docker ps
+```
+
+Stop and remove the app instance:
+
+```
+docker stop myapp_1
+docker rm -v myapp_1
+```
+
+Link a local dir to the app instance
+
+```
+mkdir -p app/html
+docker run -d -p 8000:80 --name myapp_1 -v $(pwd)/app/html:/var/www/html myapp
+```
+
+### References
+
+* [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
+
 ----
 
 ## Prerequisites
