@@ -2,5 +2,3 @@ app:
   build: ./app
   ports:
     - '8000:80'
-  volumes:
-    - ./app/html:/var/www/html
