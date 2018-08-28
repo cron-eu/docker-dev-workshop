@@ -17,3 +17,13 @@ db:
     MYSQL_DATABASE: typo3app
     MYSQL_USER: typo3app
     MYSQL_PASSWORD: "typo3app"
+
+dev:
+  build: ./dev
+  ports:
+    - '2200:22'
+  links:
+    - db
+    - app
+  volumes_from:
+    - app
