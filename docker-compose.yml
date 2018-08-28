@@ -2,5 +2,18 @@ app:
   build: ./app
   ports:
     - '8000:80'
-  volumes:
-    - ./app/html:/var/www/html
+  links:
+    - db
+  # volumes:
+  #   - ./app/html:/var/www/html
+
+db:
+  # see https://hub.docker.com/_/mysql/
+  image: mysql:latest
+  command: --default-authentication-plugin=mysql_native_password
+  restart: always
+  environment:
+    MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    MYSQL_DATABASE: typo3app
+    MYSQL_USER: typo3app
+    MYSQL_PASSWORD: "typo3app"
