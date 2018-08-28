@@ -4,8 +4,6 @@ app:
     - '8000:80'
   links:
     - db
-  # volumes:
-  #   - ./app/html:/var/www/html
 
 db:
   # see https://hub.docker.com/_/mysql/
