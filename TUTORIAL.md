@@ -95,6 +95,17 @@ docker run -d -p 8000:80 --name myapp_1 -v $(pwd)/app/html:/var/www/html myapp
 
 * [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 
+
+Docker Compose
+--------------
+
+Instead of using `docker` manually a `docker-compose.yml` configuration file
+can be used instead:
+
+```
+docker-compose up -d
+```
+
 ----
 
 ## Prerequisites
